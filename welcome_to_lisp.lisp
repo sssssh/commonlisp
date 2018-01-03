@@ -25,3 +25,14 @@
 (list 'my (+ 2 1) "Sons")
 (list (+ 2 1) (+ 2 1))
 (list '(+ 2 1) (+ 2 1))
+
+
+;; List Operations
+(cons 'a '(b c d)) ; 用函数cons来构造列表
+(cons 'a (cons 'b nil))
+(list 'a 'b)
+(car '(a b c)) ; 对列表取 car 返回第一个元素
+(cdr '(a b c)) ; 对列表取 cdr 返回第一个元素之后的所有元素
+(car (cdr (cdr '(a b c d))))
+(third '(a b c d))
+(second '(a b c d))
