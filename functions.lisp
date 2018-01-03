@@ -37,3 +37,23 @@
   (list a b c c-supplied-p))
 
 ;; 5.6 混合不同的形参类型
+(defun foo (&rest rest &key a b c)
+  (list rest a b c))
+
+;; 5.7 函数返回值
+(defun foo (n)
+  (dotimes (i 10)
+    (dotimes (j 10)
+      (when (> (* i j) n)
+	(return-from foo (list i j))))))
+
+;; 5.8 高阶函数
+(defun foo (x) (* 2 x))
+
+(defun plot (fn min max step)
+  (loop for i from min to max by step do
+       (loop repeat (funcall fn i) do (format t "*"))
+       (format t "~%")))
+
+;; 5.9 匿名函数
+(defun double (x) (* 2 x))
