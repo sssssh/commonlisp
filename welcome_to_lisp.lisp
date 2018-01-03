@@ -80,3 +80,12 @@
   (> (+ x y) z))
 
 (sum-greater 1 4 3)
+
+
+;; Recursion
+(defun our-member (obj lst)
+  (if (null lst)
+      nil
+      (if (eql (car lst) obj) ; eql测试它的两个实参是否相等。
+	  lst
+	  (our-member obj (cdr lst)))))
