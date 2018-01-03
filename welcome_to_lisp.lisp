@@ -66,3 +66,17 @@
 ;;; and or
 (and t (+ 1 2))
 (and nil (+ 1 2))
+
+
+;; Functions
+(defun our-third (x)
+  (car (cdr (cdr x))))
+
+(our-third '(a b c d))
+
+(> (+ 1 4) 3)
+
+(defun sum-greater (x y z)
+  (> (+ x y) z))
+
+(sum-greater 1 4 3)
