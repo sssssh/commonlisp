@@ -36,3 +36,33 @@
 (car (cdr (cdr '(a b c d))))
 (third '(a b c d))
 (second '(a b c d))
+
+;; Truth
+;;; 符号 t 是表示逻辑真的缺省值
+;;; 与nil相同，t也是对自身求值
+(listp '(a b c)) ; 如果实参是一个列表，则函数listp返回真
+
+;;; 函数的返回值将会别解释成逻辑真或逻辑假时，则称此函数为谓词(predicate)
+;;; 在clisp里，谓词的名字通常以p结尾
+(listp 27)
+(null nil)
+(not nil)
+
+;;; if - 接受三个实参：一个test表达式，一个then表达式和一个else表达式
+(if (listp '(a b c))
+    (+ 1 2)
+    (+ 5 6))
+
+(if (listp 27)
+    (+ 1 2)
+    (+ 5 6))
+
+;;; if 是特殊的操作符。
+(if (listp 27)
+    (+ 1 2))
+
+(if 27 1 2)
+
+;;; and or
+(and t (+ 1 2))
+(and nil (+ 1 2))
