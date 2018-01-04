@@ -86,6 +86,27 @@
 (defun our-member (obj lst)
   (if (null lst)
       nil
-      (if (eql (car lst) obj) ; eql测试它的两个实参是否相等。
+      (if (eql (car lst) obj)
 	  lst
-	  (our-member obj (cdr lst)))))
+	  (our-member obj (car lst)))))
+
+;; Variables
+;;; local variable
+(let ((x 1) (y 2)) ; let引入新的局部变量
+  (+ x y))
+
+(defun ask-number ()
+  (format t "Please enter a number. ")
+  (let ((val (read)))
+    (if (numberp val)
+	val
+	(ask-number))))
+
+;;; global variable
+(defparameter *glob* 99)
+
+;;; 全局的常量
+(defconstant limit (+ *glob* 1))
+
+;;; 如果你想要检查某些符号，是否为一个全局变量或常量，使用boundp函数
+(boundp '*glob*)
