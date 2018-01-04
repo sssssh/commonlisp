@@ -142,3 +142,32 @@
 (remove 'a lst)
 lst
 (setf x (remove 'a x))
+
+;; Iteration
+(defun show-squares (start end)
+  (do ((i start (+ i 1))) ; do宏是clisp里最基本的迭代操作符。(variable initial update)
+      ((> i end) 'done)
+    (format t "~A ~A~%" i (* i i))))
+
+(show-squares 2 5)
+
+;;; 递归版本
+(defun show-squares-1 (i end)
+  (if (> i end)
+      'done
+      (progn ; 接受任意数量的表达式，依序求值，并返回最后一个表达式的值
+	(format t "~A ~A~%" i (* i i))
+	(show-squares (+ i 1) end))))
+
+
+(defun our-length (lst)
+  (let ((len 0))
+    (dolist (obj lst)
+      (setf len (+ len 1)))
+    len))
+
+
+(defun our-length-1 (lst)
+  (if (null lst)
+      0
+      (+ (our-length-1 (cdr lst)) 1)))
