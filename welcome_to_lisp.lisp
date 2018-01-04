@@ -125,6 +125,20 @@
   (setf n 2)
   n)
 
-;; 如果setf的第一个实参是符号(symbol)，且符号不是某个局部变量的名字
-;; 则setf把这个符号设为全局变量：
+;;; 如果setf的第一个实参是符号(symbol)，且符号不是某个局部变量的名字
+;;; 则setf把这个符号设为全局变量：
 ;;; 不建议这样用
+(setf x (list 'a 'b 'c))
+(setf (car x) 'n)
+(setf a 'b
+      c 'd
+      e 'f)
+(setf a 'b)
+(setf c 'd)
+(setf e 'f)
+
+;; Functional Programming
+(setf lst '(c a r a t))
+(remove 'a lst)
+lst
+(setf x (remove 'a x))
