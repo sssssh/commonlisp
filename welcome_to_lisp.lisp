@@ -90,6 +90,13 @@
 	  lst
 	  (our-member obj (car lst)))))
 
+;; Input and Output
+(format t "~A plus ~A equals ~A. ~%" 2 3 (+ 2 3)) ; ~%表示一个换行
+
+(defun askem (string)
+  (format t "~A" string)
+  (read)) ;read 是一个完整的 Lisp 解析器(parser)
+
 ;; Variables
 ;;; local variable
 (let ((x 1) (y 2)) ; let引入新的局部变量
