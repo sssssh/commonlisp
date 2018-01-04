@@ -171,3 +171,21 @@ lst
   (if (null lst)
       0
       (+ (our-length-1 (cdr lst)) 1)))
+
+
+;; Functions as Objects
+(function +) ; function 是一个特殊操作符
+#'+ ; sharp-quote
+(apply #'+ '(1 2 3)) ; apply接受一个函数和实参
+(apply #'+ 1 2 '(3 4 5))
+
+(funcall #'+ 1 2 3) ; 函数 funcall 做的是一样的事情，但不需要把实参包装成列表
+
+;;; lambda
+(lambda (x y)
+  (+ x y))
+
+((lambda (x) (+ x 100)) 1)
+
+(funcall #'(lambda (x) (+ x 100))
+	1) ; lambda表达式前面贴上#'，可以得到对应的函数
