@@ -181,7 +181,7 @@ lst
 
 (funcall #'+ 1 2 3) ; 函数 funcall 做的是一样的事情，但不需要把实参包装成列表
 
-;;; lambda
+;; lambda
 (lambda (x y)
   (+ x y))
 
@@ -189,3 +189,13 @@ lst
 
 (funcall #'(lambda (x) (+ x 100))
 	1) ; lambda表达式前面贴上#'，可以得到对应的函数
+
+
+;; Types
+;; 显示类型(manifest typing)
+;; 不需要声明变量的类型，变量可以存放任何类型的对象。
+;; 数字27的类型，依普遍性的增加排序, fixnum integer rational real number atom t
+;; 类型t是所有类型的基类(supertype)
+
+;;; 函数typep接受一个对象和一个类型，然后判定对象是否为该类型
+(typep 27 'integer)
