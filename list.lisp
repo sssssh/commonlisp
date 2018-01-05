@@ -16,3 +16,18 @@
   (not (consp x))) ; 判断式atom
 
 ;;;; nil既是一个原子，也是一个列表。
+
+;; Equality
+(eql (cons 'a nil) (cons 'a nil))
+
+(setf x (cons 'a nil))
+(eql x x) ; eql只有在它的参数是相同物件时才返回真
+
+(equal x (cons 'a nil)) ; equal若它的参数打印的值相同时，返回真
+
+(defun our-equal (x y)
+  (or (eql x y)
+      (and (consp x)
+	   (consp y)
+	   (our-equal (car x) (car y))
+	   (our-equal (cdr x) (cdr y)))))
