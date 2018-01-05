@@ -199,3 +199,87 @@ lst
 
 ;;; 函数typep接受一个对象和一个类型，然后判定对象是否为该类型
 (typep 27 'integer)
+
+
+;; Looking Forward
+
+;;; C是拿来写Unix的语言，
+;;; Lisp是拿来写Lisp的语言
+;;; 你不但在语言之中编程，还是把语言改善成适合程序的语言
+
+;; Summary
+
+;; Exercises
+
+;;; 1
+(if (listp 1) (+ 1 2) (+ 3 4))
+(list (and (listp 3) t) (+ 1 2))
+
+;;; 2
+(cons 'a '(b c))
+(cons 'a (cons 'b '(c)))
+(cons 'a (cons 'b (cons 'c nil)))
+
+;;; 3
+(defun fourth-elements (lst)
+  (car (cdr (cdr (cdr lst)))))
+
+;;; 4
+(defun bigger (x y)
+  (if (> x y) x y))
+
+;;; 5
+(defun enigma (x)
+  (and (not (null x))
+       (or (null (car x))
+	   (enigma (cdr x)))))
+
+(defun mystery (x y)
+  (if (null y)
+      nil
+      (if (eql (car y) x)
+	  0
+	  (let ((z (mystery x (cdr y))))
+	    (and z (+ z 1))))))
+
+;;; 6
+(car (car (cdr '(a (b c) d))))
+(or 13 (/ 1 0))
+(apply #'list 1 nil)
+
+;;; 7
+(defun nest-p (lst)
+  (if lst
+      (or (listp (car lst))
+	  (nest-p (cdr lst)))))
+
+;;; 8
+(defun ndots-rep (n)
+  (do ((i 0 (+ i 1))) ((= i n))
+    (format t ".")))
+
+(defun ndots-rec (n)    
+  (if (plusp n)
+      (progn
+         (format t ".")
+         (ndots-rec (- n 1)))))
+
+(defun a-rep (ls)
+  (do ((ls1 ls (cdr ls1))
+       (n 0 (+ n (if (eq (car ls1) 'a) 1 0))))
+      ((not ls1) n)))
+
+
+(defun a-rec (ls) 
+  (if ls
+      (+ (if (eq (car ls) 'a) 1 0) (a-rec (cdr ls)))
+      0))
+
+;;; 9
+(defun summit (lst)
+  (apply #'+ (remove nil lst)))
+
+(defun summit (lst)
+   (if lst
+      (+ (or (car lst) 0) (summit (cdr lst)))
+      0))
