@@ -122,3 +122,27 @@
 
 (maplist #'(lambda (x) x)
 	 '(a b c))
+
+
+;; Trees
+(defun our-copy-tree (tr)
+  (if (atom tr)
+      tr
+      (cons (our-copy-tree (car tr))
+	    (our-copy-tree (cdr tr)))))
+
+(copy-tree '(a (b c) d))
+(our-copy-tree '(a (b c) d))
+
+(and (integerp x) (zerop (mod x 2)))
+
+(substitute 'y 'x '(and (integerp x) (zerop (mod x))))
+(subst 'y 'x '(and (integerp x) (zerop (mod x 2))))
+
+(defun our-subst (new old tree)
+  (if (eql tree old)
+      new
+      (if (atom tree)
+	  tree
+	  (cons (our-subst new old (car tree))
+		(our-subst new old (cdr tree))))))
