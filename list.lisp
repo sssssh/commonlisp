@@ -31,3 +31,8 @@
 	   (consp y)
 	   (our-equal (car x) (car y))
 	   (our-equal (cdr x) (cdr y)))))
+
+;; Why lisp has no pointers
+(setf x '(a b c))
+(setf y x)
+(eql x y)
