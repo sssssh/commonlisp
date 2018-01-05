@@ -110,3 +110,15 @@
 
 (eql (second '(x y z)) (nth 1 '(x y z)))
 (caddr '(x y z)) ; (car (cdr (cdr '(x y z))))
+
+
+;; Mapping Functions
+(mapcar #'(lambda (x) (+ x 10))
+	'(1 2 3))
+
+(mapcar #'list
+	'(a b c)
+	'(1 2 3 4))
+
+(maplist #'(lambda (x) x)
+	 '(a b c))
