@@ -36,3 +36,16 @@
 (setf x '(a b c))
 (setf y x)
 (eql x y)
+
+;; Building Lists
+(setf x '(a b c)
+      y (copy-list x))
+
+(defun our-copy-list (lst)
+  (if (atom lst)
+      lst
+      (cons (car lst) (our-copy-list (cdr lst))))) ; x与(copy-list x)会equal
+
+(append '(a b) '(c d))
+(append '(a b) '(c d) '(e f))
+(append '(a b) 'c)
