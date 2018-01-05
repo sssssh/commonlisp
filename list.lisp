@@ -93,3 +93,20 @@
 (uncompress '((3 1) 0 1 (4 0) 1))
 
 (list-of 3 'ho) ; make-list
+
+
+;; Access
+(nth 0 '(a b c)) ; 找到列表特定位置的元素
+(nth 2 '(a b c))
+(nthcdr 1 '(a b c)) ; slice
+
+(defun our-nthcdr (n lst)
+  (if (zerop n)
+      lst
+      (our-nthcdr (- n 1) (cdr lst))))
+
+(last '(a b c))
+(car (last '(a b c)))
+
+(eql (second '(x y z)) (nth 1 '(x y z)))
+(caddr '(x y z)) ; (car (cdr (cdr '(x y z))))
