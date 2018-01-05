@@ -146,3 +146,14 @@
 	  tree
 	  (cons (our-subst new old (car tree))
 		(our-subst new old (cdr tree))))))
+
+;; Understanding Recursion
+(defun len (lst)
+  (if (null lst)
+      0
+      (+ (len (cdr lst)) 1)))
+
+(defun our-member (obj lst)
+  (if (eql (car lst) obj)
+      lst
+      (our-member obj (cdr lst))))
