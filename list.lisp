@@ -157,3 +157,34 @@
   (if (eql (car lst) obj)
       lst
       (our-member obj (cdr lst))))
+
+
+;; Sets
+(member 'b '(a b c)) ; 返回由尋找物件所開始的那部分
+
+;;; 关键字参数
+(member '(a) '((a) (z)) :test #'equal)
+(member 'a '((a b) (c d)) :key #'car)
+
+(member 2 '((1) (2)) :key #'car :test #'equal)
+(member 2 '((1) (2)) :test #'equal :key #'car)
+
+;;; oddp
+(member-if #'oddp '(2 3 4))
+
+(defun our-member-if (fn lst)
+  (and (consp lst)
+       (if (funcall fn (car lst))
+	   lst
+	   (our-member-if fn (cdr lst)))))
+
+;;; adjoin
+(adjoin 'b '(a b c))
+(adjoin 'z '(a b c))
+
+;;; union intersection complement
+(union '(a b c) '(c b s))
+
+(intersection '(a b c) '(b b c))
+
+(set-difference '(a b c d e) '(b e))
