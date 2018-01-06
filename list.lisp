@@ -188,3 +188,35 @@
 (intersection '(a b c) '(b b c))
 
 (set-difference '(a b c d e) '(b e))
+
+;; Sequences
+(length '(a b c))
+
+(subseq '(a b c d) 1 2)
+(subseq '(a b c d) 1)
+
+(reverse '(a b c))
+
+;;; palindrome
+(defun mirror? (s)
+  (let ((len (length s)))
+    (and (evenp len)
+	 (let ((mid (/ len 2)))
+	   (equal (subseq s 0 mid)
+		  (reverse (subseq s mid)))))))
+
+(mirror? '(a b b a))
+
+(sort '(0 2 1 3 8) #'>)
+
+;;; 接受一個整數n，返回列表中第n大的元素
+(defun nthmost (n lst)
+  (nth (- n 1)
+       (sort (copy-list lst) #'>)))
+
+(nthmost 2 '(0 2 1 3 8))
+
+(every #'oddp '(1 3 5))
+(some #'evenp '(1 2 3))
+
+(every #'> '(1 3 5) '(0 2 4))
