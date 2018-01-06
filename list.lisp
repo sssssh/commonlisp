@@ -220,3 +220,21 @@
 (some #'evenp '(1 2 3))
 
 (every #'> '(1 3 5) '(0 2 4))
+
+
+;; Stacks
+;;; (push obj lst)
+;;; (setf lst (cons obj lst))
+;;; (pip lst)
+
+;;; (let ((x (car lst)))
+;;;   (setf lst (cdr lst))
+;;;   x)
+
+(defun our-reverse (lst)
+  (let ((acc nil))
+    (dolist (elt lst)
+      (push elt acc))
+    acc))
+
+;;; pushnew 宏是push的變種，使用了adjoin而不是cons
