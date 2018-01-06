@@ -238,3 +238,18 @@
     acc))
 
 ;;; pushnew 宏是push的變種，使用了adjoin而不是cons
+
+
+;; Dotted Lists
+(defun proper-list? (x)
+  (or (null x)
+      (and (consp x)
+	   (proper-list? (cdr x)))))
+
+(setf pair (cons 'a 'b))
+(cons 'a (cons 'b (cons 'c 'd)))
+
+'(a . (b . nil))
+'(a . (b))
+'(a b . nil)
+'(a b)
