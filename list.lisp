@@ -253,3 +253,16 @@
 '(a . (b))
 '(a b . nil)
 '(a b)
+
+
+;; Assoc-lists
+(setf trans '((+ . "add") (- . "subtract")))
+(assoc '+ trans)
+(assoc '* trans)
+
+(defun our-assoc (key alist)
+  (and (consp alist)
+       (let ((pair (car alist)))
+	 (if (eql key (car pair))
+	     pair
+	     (our-assoc key (cdr alist))))))
