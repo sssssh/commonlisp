@@ -294,3 +294,10 @@
 	  (cdr (assoc node net))))
 
 ;;; 廣度優先搜索(breadth-first search)
+
+
+;; Garbages
+
+;; Summary
+
+;; Exercises
