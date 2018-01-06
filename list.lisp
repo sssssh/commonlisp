@@ -257,6 +257,7 @@
 
 ;; Assoc-lists
 (setf trans '((+ . "add") (- . "subtract")))
+
 (assoc '+ trans)
 (assoc '* trans)
 
